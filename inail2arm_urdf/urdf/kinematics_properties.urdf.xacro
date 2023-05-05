@@ -41,6 +41,14 @@
 <xacro:property name="Wrist_1_pitch" value=" 0.0 "/>
 <xacro:property name="Wrist_1_yaw" value=" 0.0 "/>
 
+<!-- Origin -->
+<xacro:property name="Wrist_2_Ox" value=" 0.0 "/>
+<xacro:property name="Wrist_2_Oy" value=" -0.0 "/>
+<xacro:property name="Wrist_2_Oz" value=" 0.0 "/>
+<xacro:property name="Wrist_2_roll" value=" 0"/>
+<xacro:property name="Wrist_2_pitch" value=" 0.0 "/>
+<xacro:property name="Wrist_2_yaw" value=" 0.0 "/>
+
 <!-- END-EFFECTORS-->
 <!-- Origin -->
 <xacro:property name="No_end_ft_Ox" value=" 0.0 "/>

@@ -149,6 +149,37 @@
          </collision>
       </link>
 
+      <link name="arm${arm_num}_6">
+         <inertial>
+            <origin xyz="${Wrist_2_x} ${rot*Wrist_2_y} ${Wrist_2_z}" />
+            <mass value="${Wrist_2_mass}" />
+            <inertia ixx="${Wrist_2_xx}" ixy="${rot*Wrist_2_xy}" ixz="${Wrist_2_xz}"
+               iyy="${Wrist_2_yy}" iyz="${rot*Wrist_2_yz}" izz="${Wrist_2_zz}" />
+         </inertial>
+
+         <!-- <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh
+                  filename="package://inail2arm_urdf/meshes/mesh_wrist-pitch.stl"
+                  scale="0.001
+               ${rot*0.001} 0.001" />
+            </geometry>
+            <material name="blue" />
+         </visual>
+
+         <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh
+                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist-pitch.stl"
+                  scale="0.001
+               ${rot*0.001} 0.001" />
+            </geometry>
+         </collision> -->
+
+      </link>
+
       <!--wrist-pitch -->
       <!-- /LINKS -->
 
@@ -172,7 +203,7 @@
          <child link="arm${arm_num}_2" />
          <origin xyz="${Shoulder_2_Ox} ${rot*Shoulder_2_Oy} ${Shoulder_2_Oz}"
             rpy="${rot*Shoulder_2_roll} ${Shoulder_2_pitch} ${Shoulder_2_yaw}" />
-         <axis xyz="0 0 1" />
+         <axis xyz="0 0 -1" />
          <limit lower="${j_arm_2_lower[arm_num-1]}" upper="${j_arm_2_upper[arm_num-1]}"
             effort="${j_arm_2_torque[arm_num-1]}" velocity="${j_arm_2_velocity[arm_num-2]}" />
       </joint>
@@ -215,15 +246,15 @@
       <!-- wrist pitch-->
 
       <!-- wrist2 pitch-->
-      <!-- <joint name="j_arm${arm_num}_6" type="revolute">
+      <joint name="j_arm${arm_num}_6" type="revolute">
          <parent link="arm${arm_num}_5" />
          <child link="arm${arm_num}_6" />
-         <origin xyz="${Wrist_1_Ox} ${rot*Wrist_1_Oy} ${Wrist_1_Oz}"
-               rpy="${rot*Wrist_1_roll} ${Wrist_1_pitch} ${Wrist_1_yaw}" />
+         <origin xyz="${Wrist_2_Ox} ${rot*Wrist_2_Oy} ${Wrist_2_Oz}"
+               rpy="${rot*Wrist_2_roll} ${Wrist_2_pitch} ${Wrist_2_yaw}" />
          <axis xyz="0 0 1" />
          <limit lower="${j_arm_6_lower[arm_num-1]}" upper="${j_arm_6_upper[arm_num-1]}"
             effort="${j_arm_6_torque[arm_num-1]}" velocity="${j_arm_6_velocity[arm_num-1]}" />
-      </joint> -->
+      </joint>
       <!-- /wrist2 pitch-->
 
 
