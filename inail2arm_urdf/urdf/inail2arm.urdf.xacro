@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+   <!-- macro arms -->
+   <xacro:macro name="inail2_arm" params="arm_num rot parent *origin">
+
+      <!-- LINKS -->
+
+      <!-- shoulder yaw-->
+      <link name="arm${arm_num}_1">
+         <inertial>
+            <origin xyz="${Shoulder_1_x} ${rot*Shoulder_1_y} ${Shoulder_1_z}" />
+            <mass value="${Shoulder_1_mass}" />
+            <inertia ixx="${Shoulder_1_xx}" ixy="${rot*Shoulder_1_xy}" ixz="${Shoulder_1_xz}"
+               iyy="${Shoulder_1_yy}" iyz="${rot*Shoulder_1_yz}" izz="${Shoulder_1_zz}" />
+         </inertial>
+
+         <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh filename="package://inail2arm_urdf/meshes/mesh_shoulder-yaw.stl"
+                  scale="0.001 ${rot*0.001} 0.001" />
+            </geometry>
+            <material name="blue" />
+         </visual>
+
+         <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_shoulder-yaw.stl"
+                  scale="0.001 ${rot*0.001} 0.001" />
+            </geometry>
+         </collision>
+      </link>
+      <!-- shoulder yaw-->
+
+      <!-- shoulder pitch-->
+      <link name="arm${arm_num}_2">
+         <inertial>
+            <origin xyz="${Shoulder_2_x} ${rot*Shoulder_2_y} ${Shoulder_2_z}" />
+            <mass value="${Shoulder_2_mass}" />
+            <inertia ixx="${Shoulder_2_xx}" ixy="${rot*Shoulder_2_xy}" ixz="${Shoulder_2_xz}"
+               iyy="${Shoulder_2_yy}" iyz="${rot*Shoulder_2_yz}" izz="${Shoulder_2_zz}" />
+         </inertial>
+
+         <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh filename="package://inail2arm_urdf/meshes/mesh_shoulder-pitch.stl"
+                  scale="0.001 ${rot*0.001} 0.001" />
+            </geometry>
+            <material name="blue" />
+         </visual>
+
+         <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_shoulder-pitch.stl"
+                  scale="0.001 ${rot*0.001} 0.001" />
+            </geometry>
+         </collision>
+      </link>
+      <!-- shoulder pitch-->
+
+      <!-- elbow-yaw-->
+      <link name="arm${arm_num}_3">
+         <inertial>
+            <origin xyz="${Elbow_1_x} ${rot*Elbow_1_y} ${Elbow_1_z}" />
+            <mass value="${Elbow_1_mass}" />
+            <inertia ixx="${Elbow_1_xx}" ixy="${rot*Elbow_1_xy}" ixz="${Elbow_1_xz}"
+               iyy="${Elbow_1_yy}" iyz="${rot*Elbow_1_yz}" izz="${Elbow_1_zz}" />
+         </inertial>
+
+         <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh filename="package://inail2arm_urdf/meshes/mesh_elbow.stl"
+                  scale="0.001 ${rot*0.001} 0.001" />
+            </geometry>
+            <material name="blue" />
+         </visual>
+
+         <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_elbow.stl"
+                  scale="0.001 ${rot*0.001} 0.001" />
+            </geometry>
+         </collision>
+      </link>
+      <!-- elbow-yaw-->
+
+      <!-- forearm-yaw -->
+      <link name="arm${arm_num}_4">
+         <inertial>
+            <origin xyz="${Forearm_1_x} ${rot*Forearm_1_y} ${Forearm_1_z}" />
+            <mass value="${Forearm_1_mass}" />
+            <inertia ixx="${Forearm_1_xx}" ixy="${rot*Forearm_1_xy}" ixz="${Forearm_1_xz}"
+               iyy="${Forearm_1_yy}" iyz="${rot*Forearm_1_yz}" izz="${Forearm_1_zz}" />
+         </inertial>
+
+         <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh filename="package://inail2arm_urdf/meshes/mesh_forearm-yaw.stl"
+                  scale="0.001 ${rot*0.001} 0.001" />
+            </geometry>
+            <material name="blue" />
+         </visual>
+
+         <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh filename="package://inail2arm_urdf/meshes/simple/mesh_forearm-yaw.stl"
+                  scale="0.001 ${rot*0.001} 0.001" />
+            </geometry>
+         </collision>
+      </link>
+      <!-- forearm-yaw -->
+
+      <!--wrist-pitch -->
+      <link name="arm${arm_num}_5">
+         <inertial>
+            <origin xyz="${Wrist_1_x} ${rot*Wrist_1_y} ${Wrist_1_z}" />
+            <mass value="${Wrist_1_mass}" />
+            <inertia ixx="${Wrist_1_xx}" ixy="${rot*Wrist_1_xy}" ixz="${Wrist_1_xz}"
+               iyy="${Wrist_1_yy}" iyz="${rot*Wrist_1_yz}" izz="${Wrist_1_zz}" />
+         </inertial>
+         <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh
+                  filename="package://inail2arm_urdf/meshes/mesh_wrist-pitch.stl"
+                  scale="0.001
+               ${rot*0.001} 0.001" />
+            </geometry>
+            <material name="blue" />
+         </visual>
+
+         <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+               <mesh
+                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist-pitch.stl"
+                  scale="0.001
+               ${rot*0.001} 0.001" />
+            </geometry>
+         </collision>
+      </link>
+
+      <!--wrist-pitch -->
+      <!-- /LINKS -->
+
+      <!-- JOINTS -->
+
+      <!-- shoulder yaw -->
+      <joint name="j_arm${arm_num}_1" type="revolute">
+         <parent link="${parent}" />
+         <child link="arm${arm_num}_1" />
+         <axis xyz="0 0 1" />
+         <origin xyz="${Shoulder_1_Ox} ${rot*Shoulder_1_Oy} ${Shoulder_1_Oz}"
+            rpy="${rot*Shoulder_1_roll} ${Shoulder_1_pitch} ${Shoulder_1_yaw}" />
+         <limit lower="${j_arm_1_lower[arm_num-1]}" upper="${j_arm_1_upper[arm_num-1]}"
+            effort="${j_arm_1_torque[arm_num-1]}" velocity="${j_arm_1_velocity[arm_num-1]}" />
+      </joint>
+      <!-- shoulder yaw -->
+
+      <!-- shoulder pitch -->
+      <joint name="j_arm${arm_num}_2" type="revolute">
+         <parent link="arm${arm_num}_1" />
+         <child link="arm${arm_num}_2" />
+         <origin xyz="${Shoulder_2_Ox} ${rot*Shoulder_2_Oy} ${Shoulder_2_Oz}"
+            rpy="${rot*Shoulder_2_roll} ${Shoulder_2_pitch} ${Shoulder_2_yaw}" />
+         <axis xyz="0 0 1" />
+         <limit lower="${j_arm_2_lower[arm_num-1]}" upper="${j_arm_2_upper[arm_num-1]}"
+            effort="${j_arm_2_torque[arm_num-1]}" velocity="${j_arm_2_velocity[arm_num-2]}" />
+      </joint>
+      <!-- shoulder pitch -->
+
+      <!-- elbow yaw -->
+      <joint name="j_arm${arm_num}_3" type="revolute">
+         <parent link="arm${arm_num}_2" />
+         <child link="arm${arm_num}_3" />
+         <origin xyz="${Elbow_1_Ox} ${rot*Elbow_1_Oy} ${Elbow_1_Oz}"
+            rpy="${rot*Elbow_1_roll} ${Elbow_1_pitch} ${Elbow_1_yaw}" />
+         <axis xyz="0 0 1" />
+         <limit lower="${j_arm_3_lower[arm_num-1]}" upper="${j_arm_3_upper[arm_num-1]}"
+            effort="${j_arm_3_torque[arm_num-1]}" velocity="${j_arm_3_velocity[arm_num-1]}" />
+      </joint>
+      <!-- elbow yaw -->
+
+      <!-- forearm yaw -->
+      <joint name="j_arm${arm_num}_4" type="revolute">
+         <parent link="arm${arm_num}_3" />
+         <child link="arm${arm_num}_4" />
+         <origin xyz="${Forearm_1_Ox} ${Forearm_1_Oy} ${Forearm_1_Oz}"
+            rpy="${rot*Forearm_1_roll} ${Forearm_1_pitch} ${Forearm_1_yaw}" />
+         <axis xyz="0 0 1" />
+         <limit lower="${j_arm_4_lower[arm_num-1]}" upper="${j_arm_4_upper[arm_num-1]}"
+            effort="${j_arm_4_torque[arm_num-1]}" velocity="${j_arm_4_velocity[arm_num-1]}" />
+      </joint>
+      <!-- forearm yaw -->
+
+      <!-- wrist pitch-->
+      <joint name="j_arm${arm_num}_5" type="revolute">
+         <parent link="arm${arm_num}_4" />
+         <child link="arm${arm_num}_5" />
+         <origin xyz="${Wrist_1_Ox} ${rot*Wrist_1_Oy} ${Wrist_1_Oz}"
+            rpy="${rot*Wrist_1_roll} ${Wrist_1_pitch} ${Wrist_1_yaw}" />
+         <axis xyz="0 0 1" />
+         <limit lower="${j_arm_5_lower[arm_num-1]}" upper="${j_arm_5_upper[arm_num-1]}"
+            effort="${j_arm_5_torque[arm_num-1]}" velocity="${j_arm_5_velocity[arm_num-1]}" />
+      </joint>
+      <!-- wrist pitch-->
+
+      <!-- wrist2 pitch-->
+      <!-- <joint name="j_arm${arm_num}_6" type="revolute">
+         <parent link="arm${arm_num}_5" />
+         <child link="arm${arm_num}_6" />
+         <origin xyz="${Wrist_1_Ox} ${rot*Wrist_1_Oy} ${Wrist_1_Oz}"
+               rpy="${rot*Wrist_1_roll} ${Wrist_1_pitch} ${Wrist_1_yaw}" />
+         <axis xyz="0 0 1" />
+         <limit lower="${j_arm_6_lower[arm_num-1]}" upper="${j_arm_6_upper[arm_num-1]}"
+            effort="${j_arm_6_torque[arm_num-1]}" velocity="${j_arm_6_velocity[arm_num-1]}" />
+      </joint> -->
+      <!-- /wrist2 pitch-->
+
+
+   </xacro:macro>
+   <!-- /macro arms -->
+
+</robot>
