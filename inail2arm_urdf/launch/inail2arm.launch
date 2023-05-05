@@ -4,7 +4,7 @@
     <arg name="visualize_inertia" default="false" />
 
 
-    <param name="robot_description" command="$(find xacro)/xacro '$(find inail2arm_urdf)/urdf/single_arm.urdf.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro '$(find inail2arm_urdf)/urdf/inail2arm.urdf.xacro'" />
     <param name="use_gui" value="$(arg gui)"/>
     <param name="rate" value="50.0"/>
      
