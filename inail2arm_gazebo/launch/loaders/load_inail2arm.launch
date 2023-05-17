@@ -8,7 +8,7 @@
     <arg name="pose_pitch" default="0" />
     <arg name="pose_yaw" default="0" />
     
-    <arg name="xacroArm" value="$(find inail2arm_urdf)/urdf/inail2arm.urdf.xacro
+    <arg name="xacroArm" value="$(find inail2arm_urdf)/urdf/inail2arm_robot.urdf.xacro
          x:=$(arg pose_x)
          y:=$(arg pose_y)
          z:=$(arg pose_z)
