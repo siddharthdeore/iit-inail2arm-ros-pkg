@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="rviz" default="true" />
+
+<!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find inail2arm_gazebo)/worlds/inail2arm.world"/> 
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="true"/>
+        <arg name="recording" value="false"/>
+        <arg name="debug" value="false"/>
+        <arg name="verbose" value="true"/>
+        <arg name="physics" value="ode"/>
+<!--   to record log, btw deprecated name now it is recording      -->
+<!--        <arg name="headless" default="false"/> -->
+    </include>
+
+    <!-- ***************************** arm table   ********************************************************************************************** -->
+<!--    <include file="$(find iit_gazebo_worlds_pkg)/table/launch/load_table.launch">
+        <arg name="table_name" value="table_arm"/>
+        <arg name="pub_tf" value="false"/>
+        <arg name="pub_world_pose" value="false"/>
+        <arg name="surface_size_x" value="0.3"/>
+        <arg name="surface_size_y" value="0.3"/>
+        <arg name="surface_high" value="0.98"/>
+    </include>-->
+    
+    <!-- ***************************** REALSENSE D435   ********************************************************************************************** -->
+    <arg name="xacroD435" value="$(find realsense_gazebo_description)/urdf/_d435i_standalone.urdf.xacro
+         x:=0.5
+         y:=0.9
+         z:=1.8
+         roll:=0
+         pitch:=0.9
+         yaw:=-1.54
+         "
+    />
+    <param name="gazebo/camera_description" command="$(find xacro)/xacro $(arg xacroD435)" />
+
+    <node name="urdf_spawner_camera" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -model d435 -param gazebo/camera_description"/>
+    
+    <!-- ***************************** ROBOT   ********************************************************************************************** -->
+
+    <include file="$(find inail2arm_gazebo)/launch/loaders/load_inail2arm.launch">
+        <arg name="pose_z" value="1.01" />
+    </include>
+    
+    <!-- ***************************** OBJECTS   ********************************************************************************************** -->
+    <arg name="t_pose_x" value="0.55" />
+    <arg name="t_pose_y" value="0" />
+    <arg name="t_pose_z" value="0" />
+    <arg name="t_high" value="0.9"/>
+
+    <include file="$(find iit_gazebo_worlds_pkg)/table/launch/load_table.launch">
+        <arg name="table_name" value="table_objects"/>
+        <arg name="pub_tf" value="false"/>
+        <arg name="pub_world_pose" value="false"/>
+        <arg name="t_pose_x" value="$(arg t_pose_x)" />
+        <arg name="t_pose_y" value="$(arg t_pose_y)" />
+        <arg name="t_pose_z" value="$(arg t_pose_z)" />
+        <arg name="surface_size_x" value="0.6"/>
+        <arg name="surface_size_y" value="1"/>
+        <arg name="surface_high" value="$(arg t_high)"/>
+        <arg name="surface_gazebo_color" value="Gazebo/Gold"/>
+    </include>
+    
+    <include file="$(find iit_gazebo_worlds_pkg)/arucoBoxes/launch/loaders/load_box.launch">
+        <arg name="name" value="box1"/>
+        <arg name="pose_x" value="$(eval t_pose_x + 0)" />
+        <arg name="pose_y" value="$(eval t_pose_y + 0)" />
+        <arg name="pose_z" value="$(eval t_high + 0.1/2 + 0.01)" />
+        <arg name="pub_box_data" value="false"/>    
+        <arg name="dim_x" value="0.1"/>
+        <arg name="dim_y" value="0.1"/>
+        <arg name="dim_z" value="0.1"/>
+        <arg name="mass" value="1"/>
+        <arg name="table_model_name" value="table_objects"/>
+        <arg name="gazebo_color" value="Gazebo/ZincYellow"/>
+    </include>
+    
+    <include file="$(find iit_gazebo_worlds_pkg)/arucoBoxes/launch/loaders/load_box.launch">
+        <arg name="name" value="box2"/>
+        <arg name="pose_x" value="$(eval t_pose_x + 0.1)" />
+        <arg name="pose_y" value="$(eval t_pose_y - 0.25)" />
+        <arg name="pose_z" value="$(eval t_high + 0.1/2 + 0.01)" />
+        <arg name="pub_box_data" value="false"/>    
+        <arg name="dim_x" value="0.1"/>
+        <arg name="dim_y" value="0.1"/>
+        <arg name="dim_z" value="0.2"/>
+        <arg name="mass" value="1"/>
+        <arg name="table_model_name" value="table_objects"/>
+        <arg name="gazebo_color" value="Gazebo/Blue"/>
+    </include>
+    
+    <include file="$(find iit_gazebo_worlds_pkg)/arucoBoxes/launch/loaders/load_box.launch">
+        <arg name="name" value="box3"/>
+        <arg name="pose_x" value="$(eval t_pose_x - 0.2)" />
+        <arg name="pose_y" value="$(eval t_pose_y + 0.4)" />
+        <arg name="pose_z" value="$(eval t_high + 0.1/2 + 0.01)" />
+        <arg name="pub_box_data" value="false"/>    
+        <arg name="dim_x" value="0.1"/>
+        <arg name="dim_y" value="0.15"/>
+        <arg name="dim_z" value="0.05"/>
+        <arg name="mass" value="1"/>
+        <arg name="table_model_name" value="table_objects"/>
+        <arg name="gazebo_color" value="Gazebo/Trunk"/>
+    </include>
+    
+    <include file="$(find iit_gazebo_worlds_pkg)/arucoBoxes/launch/loaders/load_box.launch">
+        <arg name="name" value="box4"/>
+        <arg name="pose_x" value="$(eval t_pose_x - 0.1)" />
+        <arg name="pose_y" value="$(eval t_pose_y - 0.4)" />
+        <arg name="pose_z" value="$(eval t_high + 0.1/2 + 0.01)" />
+        <arg name="pub_box_data" value="false"/>    
+        <arg name="dim_x" value="0.25"/>
+        <arg name="dim_y" value="0.08"/>
+        <arg name="dim_z" value="0.078"/>
+        <arg name="mass" value="1"/>
+        <arg name="table_model_name" value="table_objects"/>
+        <arg name="gazebo_color" value="Gazebo/Orange"/>
+    </include>
+
+    
+        <!-- unique node for pub all obj_world_poses, so we put pub_xxx_data to false above -->
+    <node name="box_pose_gazebo_to_tf" pkg="iit_gazebo_worlds_pkg" type="pose_gazebo_to_tf.py" output="screen" 
+          args="--reference world --models table_objects box1 --models_link surface box1_link --ignore_roslaunch_added_param" />
+    
+    <!-- *************************** RVIZ OPTION ********************************************************************************************* -->
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(find inail2arm_urdf)/config/inail2arm_rviz.rviz">
+    </node> 
+
+</launch>
+
