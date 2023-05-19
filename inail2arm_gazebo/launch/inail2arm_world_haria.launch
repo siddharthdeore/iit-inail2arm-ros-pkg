@@ -56,6 +56,7 @@
 
     <include file="$(find iit_gazebo_worlds_pkg)/table/launch/load_table.launch">
         <arg name="table_name" value="table_objects"/>
+        <arg name="table_urdf_name" value="table"/>
         <arg name="pub_tf" value="false"/>
         <arg name="pub_world_pose" value="false"/>
         <arg name="t_pose_x" value="$(arg t_pose_x)" />
