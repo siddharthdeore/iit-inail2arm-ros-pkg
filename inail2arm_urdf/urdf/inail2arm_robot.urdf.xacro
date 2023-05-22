@@ -8,6 +8,13 @@
     <xacro:arg name="pitch" default="0"/>
     <xacro:arg name="yaw" default="0"/>
     
+    <link name="world"/>
+    <joint name="reference" type="fixed">
+      <parent link="world"/>
+      <child link="base_link"/>
+      <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
+    </joint>
+    
     <!-- **** main robot model **** -->
     <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2arm.urdf.xacro" />
 

@@ -22,7 +22,6 @@
   <!-- /macro arms -->
   <!-- /macro ee -->
   <!-- Origin -->
-  <link name="world"/>
   <!-- base -->
   <link name="base_link">
     <inertial>
@@ -45,11 +44,6 @@
     </collision>
   </link>
   <!-- base -->
-  <joint name="base_joint" type="fixed">
-    <parent link="world"/>
-    <child link="base_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0"/>
-  </joint>
   <!-- LINKS -->
   <!-- shoulder yaw-->
   <link name="arm1_1">
