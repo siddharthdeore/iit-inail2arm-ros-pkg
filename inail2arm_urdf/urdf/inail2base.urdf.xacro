@@ -30,12 +30,13 @@
         </link>
         <!-- base -->
 
-        <joint name="base_joint" type="fixed">
-            <parent link="${parent}" />
-            <child link="base_link" />
-            <xacro:insert_block name="origin" />
-        </joint>
-
+        <xacro:unless value="${parent == ''}">
+            <joint name="base_joint" type="fixed">
+                <parent link="${parent}" />
+                <child link="base_link" />
+                <xacro:insert_block name="origin" />
+            </joint>
+        </xacro:unless>
 
     </xacro:macro>
 
