@@ -2,6 +2,8 @@
 
 ## Setup to use ros_control (and moveit) with xbot2!
 
+Clone this repo and https://github.com/ADVRHumanoids/ros_xbot_hw_interface
+
 - switch on the robot / launch gazebo (eg `roslaunch inail2arm_gazebo inail2arm_world_haria.launch`)
 - run xbot2 (eg `xbot2-core`)
 - put robot in homing, better safe than sorry (eg `xbot2-gui`)
