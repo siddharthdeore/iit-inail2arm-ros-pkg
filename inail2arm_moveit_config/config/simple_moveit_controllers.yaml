@@ -10,17 +10,6 @@ controller_list:
     - j_arm1_4
     - j_arm1_5
     - j_arm1_6
- - name: pos_joint_controller
-   action_ns: position_controllers
-   type: JointGroupPositionController
-   default: false
-   joints:
-    - j_arm1_1
-    - j_arm1_2
-    - j_arm1_3
-    - j_arm1_4
-    - j_arm1_5
-    - j_arm1_6
 initial:  # Define initial robot poses per group
   - group: arm
     pose: home
