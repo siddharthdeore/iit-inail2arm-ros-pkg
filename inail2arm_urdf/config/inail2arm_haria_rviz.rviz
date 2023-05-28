@@ -9,6 +9,7 @@ Panels:
         - /D435i1
         - /TF1/Frames1
         - /MotionPlanning1
+        - /MotionPlanning1/Status1
         - /MotionPlanning1/Scene Geometry1
         - /MotionPlanning1/Planning Request1
       Splitter Ratio: 0.5
@@ -509,58 +510,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          arm1_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          dagana_1_bottom_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          dagana_1_tcp:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          dagana_1_top_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          tcp_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
         Loop Animation: false
         Robot Alpha: 0.5
         Robot Color: 150; 50; 150
@@ -585,7 +534,7 @@ Visualization Manager:
         Interactive Marker Size: 0
         Joint Violation Color: 255; 0; 255
         Planning Group: arm
-        Query Goal State: false
+        Query Goal State: true
         Query Start State: false
         Show Workspace: false
         Start State Alpha: 1
@@ -607,58 +556,6 @@ Visualization Manager:
           Expand Link Details: false
           Expand Tree: false
           Link Tree Style: Links in Alphabetic Order
-          arm1_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_2:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_3:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_4:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_5:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          arm1_6:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          base_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          dagana_1_bottom_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          dagana_1_tcp:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          dagana_1_top_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          tcp_1:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
         Robot Alpha: 1
         Show Robot Collision: false
         Show Robot Visual: true
@@ -736,5 +633,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1444
-  X: 2252
-  Y: 168
+  X: 2034
+  Y: 82
