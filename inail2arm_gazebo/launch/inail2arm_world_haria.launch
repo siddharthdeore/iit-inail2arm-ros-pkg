@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <launch>
 
+    <env name="ROSCONSOLE_FORMAT" value="[${severity}] [${time}] [${node}] [${function}] [${line}]: ${message}"/>
+
+    
     <arg name="rviz" default="true" />
 
 <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
@@ -28,19 +31,18 @@
     </include>-->
     
     <!-- ***************************** REALSENSE D435   ********************************************************************************************** -->
-    <arg name="xacroD435" value="$(find realsense_gazebo_description)/urdf/_d435i_standalone.urdf.xacro
-         x:=-0.525
-         y:=0.534
-         z:=1.15
-         roll:=-0.01
-         pitch:=0.479
-         yaw:=-0.627
-         "
-    />
-    <param name="gazebo/camera_description" command="$(find xacro)/xacro $(arg xacroD435)" />
-
-    <node name="urdf_spawner_camera" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-urdf -model d435 -param gazebo/camera_description"/>
+    
+    <include file="$(find realsense_gazebo_description)/launch/load_d435i_standalone.launch">
+        <arg name="name" default="D435i" />
+        <arg name="pose_x" value="-0.525" />
+        <arg name="pose_y" value="0.534" />
+        <arg name="pose_z" value="1.15" />
+        <arg name="pose_roll" value="0" />
+        <arg name="pose_pitch" value="0.479" />
+        <arg name="pose_yaw" value="-0.627" />
+        <arg name="enable_pointcloud" value="true" />
+        <arg name="pub_world_tf" value="true" />
+    </include>
     
     <!-- ***************************** TABLE   ********************************************************************************* -->
 
@@ -135,8 +137,8 @@
 
     
         <!-- unique node for pub all obj_world_poses, so we put pub_xxx_data to false above -->
-    <node name="box_pose_gazebo_to_tf" pkg="iit_gazebo_worlds_pkg" type="pose_gazebo_to_tf.py" output="screen" 
-          args="--reference world --models table d435 box1 box2 box3 box4 --models_link surface d435_base box1 box2 box3 box4 --ignore_roslaunch_added_param" />
+    <node name="poses_gazebo_to_tf" pkg="iit_gazebo_worlds_pkg" type="pose_gazebo_to_tf.py" output="screen" 
+          args="--reference world --models table box1 box2 box3 box4 --models_link surface box1 box2 box3 box4 --ignore_roslaunch_added_param" />
     
     <!-- *************************** RVIZ OPTION ********************************************************************************************* -->
     <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(find inail2arm_urdf)/config/inail2arm_haria_rviz.rviz">
