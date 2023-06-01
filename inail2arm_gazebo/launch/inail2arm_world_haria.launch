@@ -33,7 +33,7 @@
     <!-- ***************************** REALSENSE D435   ********************************************************************************************** -->
     
     <include file="$(find realsense_gazebo_description)/launch/load_d435i_standalone.launch">
-        <arg name="name" default="D435i" />
+        <arg name="name" default="D435_camera" />
         <arg name="pose_x" value="-0.525" />
         <arg name="pose_y" value="0.534" />
         <arg name="pose_z" value="1.15" />
