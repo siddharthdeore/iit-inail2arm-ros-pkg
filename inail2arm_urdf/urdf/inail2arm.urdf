@@ -44,6 +44,32 @@
     </collision>
   </link>
   <!-- base -->
+  <!-- Screws mounting points -->
+  <link name="screw_top_right"/>
+  <link name="screw_top_left"/>
+  <link name="screw_bottom_right"/>
+  <link name="screw_bottom_left"/>
+  <joint name="screw_top_right_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="screw_top_right"/>
+    <origin rpy="0 0 0" xyz="0.05 -0.05 0"/>
+  </joint>
+  <joint name="screw_top_left_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="screw_top_left"/>
+    <origin rpy="0 0 0" xyz="0.05 0.05 0"/>
+  </joint>
+  <joint name="screw_bottom_right_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="screw_bottom_right"/>
+    <origin rpy="0 0 0" xyz="-0.05 -0.05 0"/>
+  </joint>
+  <joint name="screw_bottom_left_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="screw_bottom_left"/>
+    <origin rpy="0 0 0" xyz="-0.05 0.05 0"/>
+  </joint>
+  <!-- Screws mounting point -->
   <!-- LINKS -->
   <!-- shoulder yaw-->
   <link name="arm1_1">
@@ -259,7 +285,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://dagana_urdf/meshes/dg0001-ch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://dagana_urdf/meshes/dg0001-simplified.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="dark_grey"/>
     </collision>
@@ -273,9 +299,9 @@
   </joint>
   <link name="dagana_1_bottom_link">
     <inertial>
-      <origin rpy="0 0 0" xyz="0.069644767 0.0026548329 -0.041960263"/>
+      <origin rpy="0 0 0" xyz="0 0.069644767 0"/>
       <mass value="4.6117745e-01"/>
-      <inertia ixx="0.0009385556899999999" ixy="-0.000264452" ixz="7.134683e-05" iyy="0.0019472731" iyz="2.529065e-06" izz="0.0014726990999999999"/>
+      <inertia ixx="0.0014726990999999999" ixy="7.134683e-05" ixz="2.529065e-06" iyy="0.0009385556899999999" iyz="-0.000264452" izz="0.0019472731"/>
     </inertial>
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -306,53 +332,54 @@
     <child link="tcp_1"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
-
-
-       <!-- Proximity Sensors -->
+  <!-- Proximity Sensors -->
   <link name="teraflex_1_sensor1_link"/>
   <link name="teraflex_1_sensor2_link"/>
   <link name="teraflex_1_sensor3_link"/>
   <link name="teraflex_1_sensor4_link"/>
   <link name="teraflex_1_sensor5_link"/>
   <link name="teraflex_1_sensor6_link"/>
-
-    <!-- joint fake -->
-  <joint name="teraflex_1_sensor0_joint" type="fixed"> <!-- sensor 1 -->
+  <!-- joint fake -->
+  <joint name="teraflex_1_sensor0_joint" type="fixed">
+    <!-- sensor 1 -->
     <parent link="arm1_4"/>
     <child link="teraflex_1_sensor1_link"/>
     <origin rpy="-3.1416 0.0 0.0" xyz="0.05460 -0.069500 0.0599528"/>
   </joint>
-    <!-- joint fake -->
-  <joint name="teraflex_1_sensor1_joint" type="fixed"> <!-- sensor 2 -->
+  <!-- joint fake -->
+  <joint name="teraflex_1_sensor1_joint" type="fixed">
+    <!-- sensor 2 -->
     <parent link="arm1_4"/>
     <child link="teraflex_1_sensor2_link"/>
     <origin rpy="3.1416 0.0 -1.5708" xyz="0.00 -0.112600 0.0599528"/>
   </joint>
-    <!-- joint fake -->
-  <joint name="teraflex_1_sensor2_joint" type="fixed"> <!-- sensor 3 -->
+  <!-- joint fake -->
+  <joint name="teraflex_1_sensor2_joint" type="fixed">
+    <!-- sensor 3 -->
     <parent link="arm1_4"/>
     <child link="teraflex_1_sensor3_link"/>
     <origin rpy="3.1416 0.0 3.1416" xyz="-0.05460 -0.069500 0.0599528"/>
   </joint>
-    <!-- joint fake -->
-  <joint name="teraflex_1_sensor3_joint" type="fixed"> <!-- sensor 4 -->
+  <!-- joint fake -->
+  <joint name="teraflex_1_sensor3_joint" type="fixed">
+    <!-- sensor 4 -->
     <parent link="arm1_4"/>
     <child link="teraflex_1_sensor4_link"/>
     <origin rpy="3.1416 0.0 0.0" xyz="0.05460 -0.1100 0.22920"/>
   </joint>
-    <!-- joint fake -->
-  <joint name="teraflex_1_sensor4_joint" type="fixed"> <!-- sensor 5 -->
+  <!-- joint fake -->
+  <joint name="teraflex_1_sensor4_joint" type="fixed">
+    <!-- sensor 5 -->
     <parent link="arm1_4"/>
     <child link="teraflex_1_sensor5_link"/>
     <origin rpy="3.1416 0.0 -1.5708" xyz="0.0 -0.133600 0.22920"/>
   </joint>
-    <!-- joint fake -->
-  <joint name="teraflex_1_sensor5_joint" type="fixed"> <!-- sensor 6 -->
+  <!-- joint fake -->
+  <joint name="teraflex_1_sensor5_joint" type="fixed">
+    <!-- sensor 6 -->
     <parent link="arm1_4"/>
     <child link="teraflex_1_sensor6_link"/>
     <origin rpy="3.1416 0.0 3.1416" xyz="-0.05460 -0.1100 0.22920"/>
   </joint>
-<!-- Proximity Sensors END-->
-
-
+  <!-- Proximity Sensors END-->
 </robot>
