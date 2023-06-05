@@ -3,8 +3,8 @@ sensors:
     point_cloud_topic: /D435_camera/depth/color/points
     max_range: 2.5
     point_subsample: 1
-    padding_offset: 0.1
-    padding_scale: 1.0
+    padding_offset: 0.05
+    padding_scale: 0.85
     max_update_rate: 1.0
     filtered_cloud_topic: filtered_cloud
     ns: D435_camera
