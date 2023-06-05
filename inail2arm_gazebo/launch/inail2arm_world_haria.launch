@@ -48,7 +48,7 @@
     
     <include file="$(find realsense_gazebo_description)/launch/load_d435i_standalone.launch">
         <arg name="name" value="D435_camera" />
-        <arg name="parent" value="surface_top" />
+        <arg name="parent" value="D435_camera_mount" />
 <!--        <arg name="pose_x" value="-0.525" />
         <arg name="pose_y" value="0.534" />
         <arg name="pose_z" value="1.15" />
@@ -57,18 +57,18 @@
         <arg name="pose_yaw" value="-0.627" />
         <arg name="pub_world_tf" value="true" />
 -->
-        <arg name="pose_x" value="$(eval t_pose_x - 0.36731)" />
-        <arg name="pose_y" value="$(eval t_pose_y + 0.732763)" />
-        <arg name="pose_z" value="$(eval surface_high + 0.39648)" />
-        <arg name="pose_roll" value="0.0101501" />
-        <arg name="pose_pitch" value="0.5798331" />
-        <arg name="pose_yaw" value="-1.1321645" />
+        <arg name="spawn_x" value="$(eval t_pose_x - 0.36731)" />
+        <arg name="spawn_y" value="$(eval t_pose_y + 0.732763)" />
+        <arg name="spawn_z" value="$(eval surface_high + 0.39648)" />
+        <arg name="spawn_roll" value="0.0101501" />
+        <arg name="spawn_pitch" value="0.5798331" />
+        <arg name="spawn_yaw" value="-1.1321645" />
         <arg name="enable_pointcloud" value="true" />
         <arg name="pub_world_tf" value="false" />
     </include>
     
-    <node pkg="tf2_ros" type="static_transform_publisher" name="table_to_cam_base" args="-0.36731 0.732763 0.39648  -0.15738 -0.2386 0.51502 -0.80777 surface_top D435_camera_mount"
-    />
+<!--    <node pkg="tf2_ros" type="static_transform_publisher" name="table_to_cam_base" args="-0.36731 0.732763 0.39648  -0.15738 -0.2386 0.51502 -0.80777 surface_top D435_camera_mount"
+    />-->
     
 
     
@@ -143,7 +143,7 @@
     
         <!-- unique node for pub all obj_world_poses, so we put pub_xxx_data to false above -->
     <node name="poses_gazebo_to_tf" pkg="iit_gazebo_worlds_pkg" type="pose_gazebo_to_tf.py" output="screen" 
-          args="--reference world --models table box1 box2 box3 box4 --models_link surface box1 box2 box3 box4 --ignore_roslaunch_added_param" />
+          args="--reference world --models table D435_camera box1 box2 box3 box4 --models_link surface D435_camera_mount box1 box2 box3 box4 --ignore_roslaunch_added_param" />
     
     <!-- *************************** RVIZ OPTION ********************************************************************************************* -->
     <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" output="screen" args="-d $(find inail2arm_urdf)/config/inail2arm_haria_rviz.rviz">
