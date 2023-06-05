@@ -19,39 +19,16 @@
 <!--   to record log, btw deprecated name now it is recording      -->
 <!--        <arg name="headless" default="false"/> -->
     </include>
-
-    <!-- ***************************** arm table   ********************************************************************************************** -->
-<!--    <include file="$(find iit_gazebo_worlds_pkg)/table/launch/load_table.launch">
-        <arg name="table_name" value="table_arm"/>
-        <arg name="pub_tf" value="false"/>
-        <arg name="pub_world_pose" value="false"/>
-        <arg name="surface_size_x" value="0.3"/>
-        <arg name="surface_size_y" value="0.3"/>
-        <arg name="surface_high" value="0.98"/>
-    </include>-->
-    
-    <!-- ***************************** REALSENSE D435   ********************************************************************************************** -->
-    
-    <include file="$(find realsense_gazebo_description)/launch/load_d435i_standalone.launch">
-        <arg name="name" default="D435_camera" />
-        <arg name="pose_x" value="-0.525" />
-        <arg name="pose_y" value="0.534" />
-        <arg name="pose_z" value="1.15" />
-        <arg name="pose_roll" value="0" />
-        <arg name="pose_pitch" value="0.479" />
-        <arg name="pose_yaw" value="-0.627" />
-        <arg name="enable_pointcloud" value="true" />
-        <arg name="pub_world_tf" value="true" />
-    </include>
     
     <!-- ***************************** TABLE   ********************************************************************************* -->
 
     <arg name="t_pose_x" value="0" />
     <arg name="t_pose_y" value="0" />
-    <arg name="t_pose_z" value="0" />
+    <arg name="surface_high" value="0.853" />
     <arg name="t_size_x" value="0.75" />
     <arg name="t_size_y" value="1.2" />
-    <arg name="t_size_z" value="0.853" />
+    <arg name="t_size_z" value="0.05" />
+
 
     <include file="$(find iit_gazebo_worlds_pkg)/table/launch/load_table.launch">
         <arg name="table_name" value="table"/>
@@ -60,12 +37,40 @@
         <arg name="pub_world_pose" value="false"/>
         <arg name="t_pose_x" value="$(arg t_pose_x)" />
         <arg name="t_pose_y" value="$(arg t_pose_y)" />
-        <arg name="t_pose_z" value="$(arg t_pose_z)" />
+        <arg name="surface_high" value="$(arg surface_high)"/>
         <arg name="surface_size_x" value="$(arg t_size_x)"/>
         <arg name="surface_size_y" value="$(arg t_size_y)"/>
-        <arg name="surface_high" value="$(arg t_size_z)"/>
+        <arg name="surface_size_z" value="$(arg t_size_z)"/>
         <arg name="surface_gazebo_color" value="Gazebo/Gold"/>
     </include>
+    
+    <!-- ***************************** REALSENSE D435   ********************************************************************************************** -->
+    
+    <include file="$(find realsense_gazebo_description)/launch/load_d435i_standalone.launch">
+        <arg name="name" value="D435_camera" />
+        <arg name="parent" value="surface_top" />
+<!--        <arg name="pose_x" value="-0.525" />
+        <arg name="pose_y" value="0.534" />
+        <arg name="pose_z" value="1.15" />
+        <arg name="pose_roll" value="0" />
+        <arg name="pose_pitch" value="0.479" />
+        <arg name="pose_yaw" value="-0.627" />
+        <arg name="pub_world_tf" value="true" />
+-->
+        <arg name="pose_x" value="$(eval t_pose_x - 0.36731)" />
+        <arg name="pose_y" value="$(eval t_pose_y + 0.732763)" />
+        <arg name="pose_z" value="$(eval surface_high + 0.39648)" />
+        <arg name="pose_roll" value="0.0101501" />
+        <arg name="pose_pitch" value="0.5798331" />
+        <arg name="pose_yaw" value="-1.1321645" />
+        <arg name="enable_pointcloud" value="true" />
+        <arg name="pub_world_tf" value="false" />
+    </include>
+    
+    <node pkg="tf2_ros" type="static_transform_publisher" name="table_to_cam_base" args="-0.36731 0.732763 0.39648  -0.15738 -0.2386 0.51502 -0.80777 surface_top D435_camera_mount"
+    />
+    
+
     
     
     <!-- ***************************** ROBOT   ******************************************************************** -->
@@ -73,7 +78,7 @@
     <include file="$(find inail2arm_gazebo)/launch/loaders/load_inail2arm.launch">
         <arg name="pose_x" value="$(eval t_pose_x - (t_size_x/2 - 0.10))" />
         <arg name="pose_y" value="$(eval t_pose_y - (t_size_y/2 - 0.10))" />
-        <arg name="pose_z" value="$(eval t_size_z + 0.02)" />
+        <arg name="pose_z" value="$(eval surface_high)" />
         <arg name="waitFor" value="table" />
     </include>
     
@@ -83,7 +88,7 @@
         <arg name="name" value="box1"/>
         <arg name="pose_x" value="$(eval t_pose_x + 0)" />
         <arg name="pose_y" value="$(eval t_pose_y + 0)" />
-        <arg name="pose_z" value="$(eval t_size_z + 0.1/2 + 0.01)" />
+        <arg name="pose_z" value="$(eval surface_high + 0.1/2 + 0.01)" />
         <arg name="pub_box_data" value="false"/>    
         <arg name="dim_x" value="0.1"/>
         <arg name="dim_y" value="0.1"/>
@@ -97,7 +102,7 @@
         <arg name="name" value="box2"/>
         <arg name="pose_x" value="$(eval t_pose_x + 0.1)" />
         <arg name="pose_y" value="$(eval t_pose_y - 0.25)" />
-        <arg name="pose_z" value="$(eval t_size_z + 0.1/2 + 0.01)" />
+        <arg name="pose_z" value="$(eval surface_high + 0.1/2 + 0.01)" />
         <arg name="pub_box_data" value="false"/>    
         <arg name="dim_x" value="0.1"/>
         <arg name="dim_y" value="0.1"/>
@@ -111,7 +116,7 @@
         <arg name="name" value="box3"/>
         <arg name="pose_x" value="$(eval t_pose_x - 0.2)" />
         <arg name="pose_y" value="$(eval t_pose_y + 0.4)" />
-        <arg name="pose_z" value="$(eval t_size_z + 0.1/2 + 0.01)" />
+        <arg name="pose_z" value="$(eval surface_high + 0.1/2 + 0.01)" />
         <arg name="pub_box_data" value="false"/>    
         <arg name="dim_x" value="0.1"/>
         <arg name="dim_y" value="0.15"/>
@@ -125,7 +130,7 @@
         <arg name="name" value="box4"/>
         <arg name="pose_x" value="$(eval t_pose_x + 0.1)" />
         <arg name="pose_y" value="$(eval t_pose_y + 0.4)" />
-        <arg name="pose_z" value="$(eval t_size_z + 0.1/2 + 0.01)" />
+        <arg name="pose_z" value="$(eval surface_high + 0.1/2 + 0.01)" />
         <arg name="pub_box_data" value="false"/>    
         <arg name="dim_x" value="0.25"/>
         <arg name="dim_y" value="0.08"/>
