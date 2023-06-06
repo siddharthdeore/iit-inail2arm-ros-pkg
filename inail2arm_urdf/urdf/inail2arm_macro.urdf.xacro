@@ -157,28 +157,6 @@
                iyy="${Wrist_2_yy}" iyz="${rot*Wrist_2_yz}" izz="${Wrist_2_zz}" />
          </inertial>
 
-
-         <!-- <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-            <geometry>
-               <mesh
-                  filename="package://inail2arm_urdf/meshes/mesh_wrist-pitch.stl"
-                  scale="0.001
-               ${rot*0.001} 0.001" />
-            </geometry>
-            <material name="blue" />
-         </visual>
-
-         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-            <geometry>
-               <mesh
-                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist-pitch.stl"
-                  scale="0.001
-               ${rot*0.001} 0.001" />
-            </geometry>
-         </collision> -->
-
       </link>
 
       <!--wrist-pitch -->

@@ -4,7 +4,7 @@
 <xacro:property name="model_name" value="inail2arm" />
 <xacro:property name="model_version" value="0.1" />
 
-<xacro:arg name="end_effector" default="dagana_fixed"/> <!-- none, ball, dagana_fixed, dagana -->
+<xacro:arg name="end_effector" default="none"/> <!-- none, ball, dagana_fixed, dagana -->
 <xacro:property name="END_EFFECTOR" value="$(arg end_effector)" />
 
 <!-- HACK to add standalone dagana plugin and ignore the dagana joint in the libxbot2_gz_joint_server -->
