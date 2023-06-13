@@ -182,30 +182,23 @@
   </link>
   <link name="arm1_6">
     <inertial>
-      <origin xyz="0 0 0"/>
-      <mass value="0.001"/>
-      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+      <origin xyz="-0.00099908245 0.0010236000000000002 0.017236136"/>
+      <mass value="0.20700511"/>
+      <inertia ixx="0.00015215801" ixy="5.6840238e-06" ixz="-1.6110538999999998e-06" iyy="0.00015336095" iyz="1.4745761999999999e-06" izz="0.00026680853"/>
     </inertial>
-    <!-- <visual>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-            <geometry>
-               <mesh
-                  filename="package://inail2arm_urdf/meshes/mesh_wrist-pitch.stl"
-                  scale="0.001
-               ${rot*0.001} 0.001" />
-            </geometry>
-            <material name="blue" />
-         </visual>
-
-         <collision>
-            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
-            <geometry>
-               <mesh
-                  filename="package://inail2arm_urdf/meshes/simple/mesh_wrist-pitch.stl"
-                  scale="0.001
-               ${rot*0.001} 0.001" />
-            </geometry>
-         </collision> -->
+    <visual>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://inail2arm_urdf/meshes/mesh_wrist-roll.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+      <geometry>
+        <mesh filename="package://inail2arm_urdf/meshes/mesh_wrist-roll.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
   </link>
   <!--wrist-pitch -->
   <!-- /LINKS -->
@@ -259,8 +252,8 @@
   <joint name="j_arm1_6" type="revolute">
     <parent link="arm1_5"/>
     <child link="arm1_6"/>
-    <origin rpy="0 0.0 0.0" xyz="0.0 -0.02 0.043"/>
-    <axis xyz="0 1 0"/>
+    <origin rpy="1.570796326795 0.0 0.0" xyz="0.0 -0.033 0.043"/>
+    <axis xyz="0 0 1"/>
     <limit effort="55.0" lower="-2.85" upper="2.85" velocity="11.72"/>
   </joint>
   <!-- /wrist2 pitch-->
@@ -269,7 +262,7 @@
   <joint name="j_tcp_1" type="fixed">
     <parent link="arm1_6"/>
     <child link="tcp_1"/>
-    <origin rpy="0. 0. 0." xyz="0 0 0"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.03475"/>
   </joint>
   <!-- virtual tip pitch-->
   <!-- Proximity Sensors -->
