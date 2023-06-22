@@ -4,29 +4,36 @@
     <xacro:include filename="$(find inail2arm_urdf)/config/inail2arm.urdf.xacro" />
     
     <group name="arm">
-        <chain base_link="base_link" tip_link="arm1_6"/>
+        <chain base_link="base_link" tip_link="tcp_1"/>
     </group>
     
     <xacro:if value="${END_EFFECTOR == 'dagana' or END_EFFECTOR == 'dagana_fixed'}">
         <group name="dagana">
-            <chain base_link="arm1_6" tip_link="tcp_1"/>
+            <chain base_link="arm1_6" tip_link="dagana_1_bottom_link"/>
         </group>
     </xacro:if>
 
     <group name="chains">
         <group name="arm"/>
+        <xacro:if value="${END_EFFECTOR == 'dagana' or END_EFFECTOR == 'dagana_fixed'}">
+            <group name="dagana"></group>
+        </xacro:if>
     </group>
     
 <!--    <group_state group="arm" name="home">-->
-    <group_state group="chains" name="home">
+    <group_state group="arm" name="home">
         <joint name="j_arm1_1" value="0.0"/>
         <joint name="j_arm1_2" value="0.45"/>
         <joint name="j_arm1_3" value="-1.6"/>
         <joint name="j_arm1_4" value="0.0"/>
         <joint name="j_arm1_5" value="1.1"/>
         <joint name="j_arm1_6" value="0.0"/>
+<!--        <xacro:if value="${END_EFFECTOR == 'dagana'}">
+            <joint name="dagana_1_bottom_link" value="0.0"/>
+        </xacro:if>-->
     </group_state>
     
+    <!--  For moveit    -->
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <xacro:if value="${END_EFFECTOR == 'dagana' or END_EFFECTOR == 'dagana_fixed'}">
         <end_effector name="dagana" parent_link="arm1_6" group="dagana" parent_group="arm"/>
