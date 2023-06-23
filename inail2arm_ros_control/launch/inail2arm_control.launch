@@ -9,7 +9,7 @@
     
     <!--   joint_state_controller should always be on   -->
     <arg name="controllers" default="joint_state_controller"/> 
-    <arg name="active_controllers" default="pos_joint_traj_controller"/>
+    <arg name="active_controllers" default="pos_joint_traj_controller gripper_action_controller"/>
     <arg name="stopped_controllers" default="pos_joint_controller" />
 
     <arg name="controller_config_file" default="$(find inail2arm_ros_control)/config/inail2arm_controllers.yaml" doc="Config file used for defining the ROS-Control controllers."/>
@@ -17,7 +17,7 @@
 
     <!-- Launch the ros hw interface for xbot -->
     <include file="$(find ros_xbot_hw_interface)/launch/ros_xbot_hw_interface.launch">
-      <arg name="gdb" value="false" />
+      <arg name="gdb" value="$(arg gdb)" />
     </include>
     
     <!-- spawn controller manager loading the controllers -->
