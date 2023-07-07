@@ -92,7 +92,7 @@
     <param name="default_planning_pipeline" value="$(arg pipeline)" />
     <param name="capabilities" value="$(arg capabilities)" />
     <param name="disable_capabilities" value="$(arg disable_capabilities)" />
-    <remap from="joint_states" to="/xbotcore/ros_joint_states"/>
+    <!--<remap from="joint_states" to="/xbotcore/ros_joint_states"/>-->
 
     <!-- do not copy dynamics information from /joint_states to internal robot monitoring
          default to false, because almost nothing in move_group relies on this information -->

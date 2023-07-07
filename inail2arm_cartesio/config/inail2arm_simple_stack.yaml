@@ -3,25 +3,40 @@ solver_options:
     back_end: qpoases
 
 stack:
-    - [arm_ee]
+    - [ArmCartesian]
 
     
 constraints: [JointLimits, VelocityLimits]
 
-arm_ee:
+ArmCartesian:
     type: Cartesian
     distal_link: tcp_1
     base_link: base_link
     lambda: 0.1
+    active: true
 
-Postural:
-    type: Postural
-    lambda: 0.01
-    weight: 0.001
+ArmCartesianLinear:
+    type: "Subtask"
+    task: "ArmCartesian"
+    #type: "Cartesian"
+    distal_link: tcp_1
+    base_link: base_link
+    lambda: 0.1
+    active: true
+    indices: [0, 1, 2]
     
+ArmCartesianAngular:
+    type: "Subtask"
+    task: "ArmCartesian"
+    #type: "Cartesian"
+    distal_link: tcp_1
+    base_link: base_link
+    lambda: 0.1
+    active: true
+    indices: [3, 4, 5]
+
 JointLimits:
     type: JointLimits
-
 
 VelocityLimits:
     type: VelocityLimits

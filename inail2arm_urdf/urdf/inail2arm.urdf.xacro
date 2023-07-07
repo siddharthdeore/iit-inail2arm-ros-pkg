@@ -9,6 +9,7 @@
     <xacro:arg name="yaw" default="0"/>
     
     <xacro:arg name="parent" default=""/>
+    <xacro:property name="parent" default="$(arg parent)"/>
 
     <xacro:include filename="$(find inail2arm_urdf)/config/inail2arm.urdf.xacro" />
     <xacro:include filename="$(find inail2arm_urdf)/urdf/conversions.urdf.xacro" />
@@ -20,10 +21,13 @@
     <xacro:include filename="$(find inail2arm_urdf)/urdf/inertial_properties.urdf.xacro" />
     <xacro:include filename="$(find inail2arm_urdf)/urdf/limits.urdf.xacro" />
     
-    <xacro:inail2_base rot="1" parent="$(arg parent)">
+    <xacro:unless value="${parent == ''}">
+        <link name="${parent}"/>
+    </xacro:unless>
+    
+    <xacro:inail2_base rot="1" parent="${parent}">
         <origin xyz="$(arg x) $(arg y) $(arg z)" rpy="$(arg roll) $(arg pitch) $(arg yaw)"/>
     </xacro:inail2_base>
-
 
     <xacro:inail2_arm arm_num="1"  rot="1"  parent="base_link">
       <origin xyz="0 0 0" rpy="0 0 0"/>

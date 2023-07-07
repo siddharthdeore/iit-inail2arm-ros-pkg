@@ -8,7 +8,7 @@
     <arg name="pose_pitch" default="0" />
     <arg name="pose_yaw" default="0" />
     <arg name="waitFor" default="" doc="Name of another model to wait. Option to wait for another model to be spawned first (eg a table on which the arm must stay on)" />
-    <arg name="pub_world_tf" default="true" />
+    <arg name="pub_world_tf" default="false" />
     
     <arg name="xacroArm" value="$(find inail2arm_urdf)/urdf/inail2arm_robot.urdf.xacro
          x:=$(arg pose_x)
