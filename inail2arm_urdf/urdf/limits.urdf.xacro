@@ -18,19 +18,19 @@
 <xacro:property name="j_arm_6_upper" value="${[2.85]}"/>
 
 
-<xacro:property name="j_arm_1_velocity" value="${[3.86, 3.86 ]}"/>
-<xacro:property name="j_arm_2_velocity" value="${[3.86, 3.86 ]}"/>
-<xacro:property name="j_arm_3_velocity" value="${[6.06, 6.06 ]}"/>
-<xacro:property name="j_arm_4_velocity" value="${[6.06, 6.06 ]}"/>
-<xacro:property name="j_arm_5_velocity" value="${[11.72, 11.72 ]}"/>
-<xacro:property name="j_arm_6_velocity" value="${[11.72, 11.72 ]}"/>
+<xacro:property name="j_arm_1_velocity" value="${[3.86]}"/>
+<xacro:property name="j_arm_2_velocity" value="${[3.86]}"/>
+<xacro:property name="j_arm_3_velocity" value="${[6.06]}"/>
+<xacro:property name="j_arm_4_velocity" value="${[6.06]}"/>
+<xacro:property name="j_arm_5_velocity" value="${[11.72]}"/>
+<xacro:property name="j_arm_6_velocity" value="${[11.72]}"/>
 
-<xacro:property name="j_arm_1_torque" value="${[147.00, 147.00 ]}"/>
-<xacro:property name="j_arm_2_torque" value="${[147.00, 147.00 ]}"/>
-<xacro:property name="j_arm_3_torque" value="${[147.00, 147.00 ]}"/>
-<xacro:property name="j_arm_4_torque" value="${[147.00, 147.00 ]}"/>
-<xacro:property name="j_arm_5_torque" value="${[55.00, 55.00 ]}"/>
-<xacro:property name="j_arm_6_torque" value="${[55.00, 55.00 ]}"/>
+<xacro:property name="j_arm_1_torque" value="${[147.00]}"/>
+<xacro:property name="j_arm_2_torque" value="${[147.00]}"/>
+<xacro:property name="j_arm_3_torque" value="${[147.00]}"/>
+<xacro:property name="j_arm_4_torque" value="${[147.00]}"/>
+<xacro:property name="j_arm_5_torque" value="${[55.00]}"/>
+<xacro:property name="j_arm_6_torque" value="${[55.00]}"/>
 
 <xacro:property name="motor_A_velocity" value="8.8"/>
 <xacro:property name="motor_B_velocity" value="8.1"/>

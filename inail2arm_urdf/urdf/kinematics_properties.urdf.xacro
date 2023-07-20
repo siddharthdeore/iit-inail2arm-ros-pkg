@@ -43,9 +43,9 @@
 
 <!-- Origin -->
 <xacro:property name="Wrist_2_Ox" value=" 0.0 "/>
-<xacro:property name="Wrist_2_Oy" value=" -0.02 "/>
+<xacro:property name="Wrist_2_Oy" value=" -0.033 "/>
 <xacro:property name="Wrist_2_Oz" value=" 0.043 "/>
-<xacro:property name="Wrist_2_roll" value=" 0"/>
+<xacro:property name="Wrist_2_roll" value=" ${PI/2} "/>
 <xacro:property name="Wrist_2_pitch" value=" 0.0 "/>
 <xacro:property name="Wrist_2_yaw" value=" 0.0 "/>
 
@@ -53,7 +53,7 @@
 <!-- Origin -->
 <xacro:property name="No_end_ft_Ox" value=" 0.0 "/>
 <xacro:property name="No_end_ft_Oy" value=" 0.0 "/>
-<xacro:property name="No_end_ft_Oz" value=" 0.0 "/>
+<xacro:property name="No_end_ft_Oz" value=" 0.03475 "/>
 <xacro:property name="No_end_ft_roll" value=" 0.0 "/>
 <xacro:property name="No_end_ft_pitch" value=" 0.0 "/>
 <xacro:property name="No_end_ft_yaw" value=" 0.0 "/>

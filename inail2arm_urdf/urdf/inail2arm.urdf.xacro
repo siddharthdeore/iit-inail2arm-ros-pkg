@@ -16,8 +16,10 @@
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:inail2_base>
 
+
     <xacro:inail2_arm arm_num="1"  rot="1"  parent="base_link">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="${Shoulder_1_Ox} ${Shoulder_1_Oy} ${Shoulder_1_Oz}"
+              rpy="${Shoulder_1_roll} ${Shoulder_1_pitch} ${Shoulder_1_yaw}" />
     </xacro:inail2_arm>
    
   
