@@ -40,3 +40,6 @@ j_arm1_6:
   pid :
     position: *pos_gains
     impedance:  *imp_gain_mid
+
+dagana_1_claw_joint:
+  control_mode: *upper_body_ctrl

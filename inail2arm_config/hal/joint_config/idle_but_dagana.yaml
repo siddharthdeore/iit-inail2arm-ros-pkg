@@ -1,5 +1,5 @@
 defines:
-  - &upper_body_ctrl D4_impedance_ctrl
+  - &upper_body_ctrl idle
   - &pos_gains [300.0, 0.0, 30.0]
   - &imp_gain_mid [500.0, 30.0, 1.0, 0.003, 0.95]
   - &imp_gain_sm [100.0, 20.0, 1.0, 0.003, 0.95]
