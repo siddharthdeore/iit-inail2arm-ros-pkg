@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="inail2arm">
+    
+    <xacro:include filename="$(find inail2arm_urdf)/config/inail2arm.urdf.xacro" />
+    
+    <group name="left_arm">
+        <chain base_link="base_link" tip_link="arm1_6"/>
+    </group>
+
+    <group name="right_arm">
+        <chain base_link="base_link" tip_link="arm2_6"/>
+    </group>
+
+    <group name="chains">
+        <group name="left_arm"/>
+        <group name="right_arm"/>
+    </group>
+    
+    <group_state group="chains" name="home">
+        <joint name="j_arm2_1" value="1.3"/>
+        <joint name="j_arm2_2" value="0.0"/>
+        <joint name="j_arm2_3" value="1.4"/>
+        <joint name="j_arm2_4" value="1.4"/>
+        <joint name="j_arm2_5" value="1.57"/>
+        <joint name="j_arm2_6" value="0.0"/>
+
+        <joint name="j_arm1_1" value="1.84"/>
+        <joint name="j_arm1_2" value="0.0"/>
+        <joint name="j_arm1_3" value="-1.4"/>
+        <joint name="j_arm1_4" value="-1.4"/>
+        <joint name="j_arm1_5" value="-1.57"/>
+        <joint name="j_arm1_6" value="0.0"/>
+    </group_state>
+
+   </robot>

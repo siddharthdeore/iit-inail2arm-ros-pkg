@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="inail2arm">
+
+    <xacro:arg name="x" default="0"/>
+    <xacro:arg name="y" default="0"/>
+    <xacro:arg name="z" default="0"/>
+    <xacro:arg name="roll" default="0"/>
+    <xacro:arg name="pitch" default="0"/>
+    <xacro:arg name="yaw" default="0"/>
+    
+    <xacro:arg name="parent" default=""/>
+    <xacro:property name="parent" default="$(arg parent)"/>
+
+    <xacro:include filename="$(find inail2arm_urdf)/config/inail2arm.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/conversions.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/materials.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2arm_macro.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2arm_ee_macro.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2base.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/kinematics_properties.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/inertial_properties.urdf.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/limits.urdf.xacro" />
+
+    <link name="world"/>
+
+    <joint name="world_joint" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 1"/>
+    </joint>
+    
+    <!-- torso -->
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" />
+            <mass value="${Base_mass}" />
+            <inertia ixx="${Base_xx}" ixy="${Base_xy}" ixz="${Base_xz}" iyy="${Base_yy}"
+                iyz="${Base_yz}" izz="${Base_zz}" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://inail2arm_urdf/meshes/inail_torso.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="dark_grey" />
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://inail2arm_urdf/meshes/simple/inail_torso.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="mount_frame_1"/>
+
+    <joint name="mount_joint_1" type="fixed">
+        <parent link="base_link"/>
+        <child link="mount_frame_1"/>
+        <origin xyz="-0.15 0.15 -0.05" rpy="0 -1.57 -0.707"/>
+    </joint>
+
+    <xacro:inail2_arm arm_num="1"  rot="1"  parent="base_link">
+        <origin xyz="-0.15 0.15 -0.05" rpy="0 -1.57 -0.707"/>
+    </xacro:inail2_arm>
+
+    <link name="mount_frame_2"/>
+
+    <joint name="mount_joint_2" type="fixed">
+        <parent link="base_link"/>
+        <child link="mount_frame_2"/>
+        <origin xyz="0.15 0.15 -0.05" rpy="0 -1.57 -2.36"/>
+    </joint>
+
+    <xacro:inail2_arm arm_num="2"  rot="1"  parent="base_link">
+        <origin xyz="0.15 0.15 -0.05" rpy="0 -1.57 -2.36"/>
+    </xacro:inail2_arm>
+    
+    <!--- END EFFECTOR  -->
+    <!-- <xacro:inail2_arm_ee arm_num="1"  parent="arm1_6">
+    </xacro:inail2_arm_ee>
+   
+    <xacro:if value="${PROXIMITY_SENSORS}">
+        <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2arm_proximity_sensors.urdf.xacro" />
+    </xacro:if> -->
+
+
+</robot>
