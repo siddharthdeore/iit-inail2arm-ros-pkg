@@ -41,6 +41,13 @@
             <pid name="j_arm1_5" profile="small_mot"/>
             <pid name="j_arm1_6" profile="small_mot"/>
             <pid name="dagana_1_claw_joint" profile="dagana_mot"/>
+
+            <pid name="j_arm2_1" profile="small_mot"/>
+            <pid name="j_arm2_2" profile="small_mot"/>
+            <pid name="j_arm2_3" profile="small_mot"/>
+            <pid name="j_arm2_4" profile="small_mot"/>
+            <pid name="j_arm2_5" profile="small_mot"/>
+            <pid name="j_arm2_6" profile="small_mot"/>
         </pid>
     </plugin>
 </gazebo>

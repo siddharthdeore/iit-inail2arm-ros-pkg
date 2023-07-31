@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="inail2arm">
+
+    <!-- **** main robot model **** -->
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/inail2_dual_arm.urdf.xacro" />
+
+    <!-- **** gazebo **** -->
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/gazebo/inail2arm.gazebo.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/gazebo/xbot.gazebo.xacro" />
+    <xacro:include filename="$(find inail2arm_urdf)/urdf/gazebo/materials.gazebo.xacro" />
+   
+</robot>

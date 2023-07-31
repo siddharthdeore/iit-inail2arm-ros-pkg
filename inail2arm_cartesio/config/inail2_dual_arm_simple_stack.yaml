@@ -1,0 +1,31 @@
+solver_options:
+    regularization: 1e-4
+    back_end: qpoases
+
+stack:
+    - [LeftEE, RightEE]
+
+    
+constraints: [JointLimits, VelocityLimits]
+
+LeftEE:
+    type: Cartesian
+    distal_link: arm1_6
+    base_link: base_link
+    lambda: 0.1
+    active: true
+    name: left_ee
+
+RightEE:
+    type: Cartesian
+    distal_link: arm2_6
+    base_link: base_link
+    lambda: 0.1
+    active: true
+    name: right_ee
+
+JointLimits:
+    type: JointLimits
+
+VelocityLimits:
+    type: VelocityLimits

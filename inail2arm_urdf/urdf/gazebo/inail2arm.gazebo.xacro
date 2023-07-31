@@ -26,5 +26,31 @@
     <provideFeedback>true</provideFeedback>
 </gazebo>
 
-</robot>
 
+    
+<gazebo reference="j_arm2_1">
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="j_arm2_2">
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="j_arm2_3">
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="j_arm2_4">
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="j_arm2_5">
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <provideFeedback>true</provideFeedback>
+</gazebo>
+<gazebo reference="j_arm2_6">
+    <implicitSpringDamper>1</implicitSpringDamper>
+    <provideFeedback>true</provideFeedback>
+</gazebo>
+
+</robot>
