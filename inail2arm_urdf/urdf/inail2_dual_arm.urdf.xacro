@@ -61,11 +61,12 @@
     <joint name="mount_joint_1" type="fixed">
         <parent link="base_link"/>
         <child link="mount_frame_1"/>
-        <origin xyz="-0.15 0.15 -0.05" rpy="0 -1.57 -0.707"/>
+        <origin xyz="0.065 -0.153361940777 0.221661940777" rpy="${45*toRad} 0 0"/>
+        <!-- <origin xyz="0.065 -${0.1074+0.065*sin(45*toRad)} ${0.1757+0.065*cos(45*toRad)}" rpy="${45*toRad} 0 0"/> -->
     </joint>
 
-    <xacro:inail2_arm arm_num="1"  rot="1"  parent="base_link">
-        <origin xyz="-0.15 0.15 -0.05" rpy="0 -1.57 -0.707"/>
+    <xacro:inail2_arm arm_num="1"  rot="1"  parent="mount_frame_1">
+        <origin xyz="0 0 0" rpy="0 0 ${-90*toRad}"/>
     </xacro:inail2_arm>
 
     <link name="mount_frame_2"/>
@@ -73,11 +74,12 @@
     <joint name="mount_joint_2" type="fixed">
         <parent link="base_link"/>
         <child link="mount_frame_2"/>
-        <origin xyz="0.15 0.15 -0.05" rpy="0 -1.57 -2.36"/>
+        <origin xyz="0.065 0.153361940777 0.221661940777" rpy="${-45*toRad} 0 0"/>
+        <!-- <origin xyz="0.065 +${0.1074+0.065*sin(45*toRad)} ${0.1757+0.065*cos(45*toRad)}" rpy="${-45*toRad} 0 0"/> -->
     </joint>
 
-    <xacro:inail2_arm arm_num="2"  rot="1"  parent="base_link">
-        <origin xyz="0.15 0.15 -0.05" rpy="0 -1.57 -2.36"/>
+    <xacro:inail2_arm arm_num="2"  rot="1"  parent="mount_frame_2">
+        <origin xyz="0 0 0" rpy="0 0 ${-90*toRad}"/>
     </xacro:inail2_arm>
     
     <!--- END EFFECTOR  -->
