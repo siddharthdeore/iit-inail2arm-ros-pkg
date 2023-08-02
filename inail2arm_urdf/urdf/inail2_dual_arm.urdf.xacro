@@ -56,26 +56,35 @@
         </collision>
     </link>
 
-    <link name="mount_frame_1"/>
-
+    <link name="mount_frame_1">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.00001"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>
     <joint name="mount_joint_1" type="fixed">
         <parent link="base_link"/>
         <child link="mount_frame_1"/>
         <origin xyz="0.065 -0.153361940777 0.221661940777" rpy="${45*toRad} 0 0"/>
-        <!-- <origin xyz="0.065 -${0.1074+0.065*sin(45*toRad)} ${0.1757+0.065*cos(45*toRad)}" rpy="${45*toRad} 0 0"/> -->
     </joint>
 
     <xacro:inail2_arm arm_num="1"  rot="1"  parent="mount_frame_1">
         <origin xyz="0 0 0" rpy="0 0 ${-90*toRad}"/>
     </xacro:inail2_arm>
 
-    <link name="mount_frame_2"/>
 
+    <link name="mount_frame_2">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.00001"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>
     <joint name="mount_joint_2" type="fixed">
         <parent link="base_link"/>
         <child link="mount_frame_2"/>
         <origin xyz="0.065 0.153361940777 0.221661940777" rpy="${-45*toRad} 0 0"/>
-        <!-- <origin xyz="0.065 +${0.1074+0.065*sin(45*toRad)} ${0.1757+0.065*cos(45*toRad)}" rpy="${-45*toRad} 0 0"/> -->
     </joint>
 
     <xacro:inail2_arm arm_num="2"  rot="1"  parent="mount_frame_2">
