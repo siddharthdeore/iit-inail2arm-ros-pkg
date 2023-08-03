@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-
+    <!-- set rviz := true for headless gazebo -->
     <arg name="rviz" default="true" />
 
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be
@@ -9,7 +9,7 @@
         <arg name="world_name" value="$(find inail2arm_gazebo)/worlds/empty.world" />
         <arg name="paused" value="false" />
         <arg name="use_sim_time" value="true" />
-        <arg name="gui" value="true" />
+        <arg name="gui" value="$(eval arg('rviz') == false )" />
         <arg name="recording" value="false" />
         <arg name="debug" value="false" />
         <arg name="verbose" value="true" />
@@ -24,5 +24,10 @@
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-urdf -model inail2_dual_arm -param gazebo/robot_description" />
 
+    <!-- start rviz -->
+    <node type="rviz" name="rviz" pkg="rviz" required="true"
+        if="$(eval arg('rviz') == true )"
+        args="-d $(find inail2arm_urdf)/config/inail2arm_dual.rviz"
+    />
 
 </launch>
