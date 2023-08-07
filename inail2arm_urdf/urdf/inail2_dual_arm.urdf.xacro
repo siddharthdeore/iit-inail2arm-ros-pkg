@@ -68,11 +68,11 @@
         <child link="mount_frame_1"/>
         <origin xyz="0.065 -0.153361940777 0.221661940777" rpy="${45*toRad} 0 0"/>
     </joint>
-
+ 
+    <!-- arm 1 -->
     <xacro:inail2_arm arm_num="1"  rot="1"  parent="mount_frame_1">
         <origin xyz="0 0 0" rpy="0 0 ${-90*toRad}"/>
     </xacro:inail2_arm>
-
 
     <link name="mount_frame_2">
         <inertial>
@@ -87,9 +87,16 @@
         <origin xyz="0.065 0.153361940777 0.221661940777" rpy="${-45*toRad} 0 0"/>
     </joint>
 
+    <!-- arm 2 -->
     <xacro:inail2_arm arm_num="2"  rot="1"  parent="mount_frame_2">
         <origin xyz="0 0 0" rpy="0 0 ${-90*toRad}"/>
     </xacro:inail2_arm>
+
+    <!-- dagana on arm 1 -->
+    <xacro:inail2_arm_ee arm_num="1"  parent="arm1_6" />
+
+    <!-- dagana on arm 2 -->
+    <xacro:inail2_arm_ee arm_num="2"  parent="arm2_6" />
     
     <!--- END EFFECTOR  -->
     <!-- <xacro:inail2_arm_ee arm_num="1"  parent="arm1_6">
