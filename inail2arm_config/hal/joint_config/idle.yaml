@@ -7,39 +7,41 @@ defines:
 
 j_arm1_1:
   control_mode: *upper_body_ctrl
-  pid :
-    position: *pos_gains
-    impedance:  *imp_gain_mid
 
 j_arm1_2:
   control_mode: *upper_body_ctrl
-  pid :
-    position: *pos_gains
-    impedance:  *imp_gain_mid
 
 j_arm1_3:
   control_mode: *upper_body_ctrl
-  pid :
-    position: *pos_gains
-    impedance:  *imp_gain_mid
 
 j_arm1_4:
   control_mode: *upper_body_ctrl
-  pid :
-    position: *pos_gains
-    impedance:  *imp_gain_mid
 
 j_arm1_5:
   control_mode: *upper_body_ctrl
-  pid :
-    position: *pos_gains
-    impedance:  *imp_gain_mid
 
 j_arm1_6:
   control_mode: *upper_body_ctrl
-  pid :
-    position: *pos_gains
-    impedance:  *imp_gain_mid
+
+j_arm2_1:
+  control_mode: *upper_body_ctrl
+
+j_arm2_2:
+  control_mode: *upper_body_ctrl
+
+j_arm2_3:
+  control_mode: *upper_body_ctrl
+
+j_arm2_4:
+  control_mode: *upper_body_ctrl
+
+
+j_arm2_5:
+  control_mode: *upper_body_ctrl
+
+j_arm2_6:
+  control_mode: *upper_body_ctrl
+
 
 dagana_1_claw_joint:
   control_mode: *upper_body_ctrl

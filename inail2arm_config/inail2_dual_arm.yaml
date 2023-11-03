@@ -1,6 +1,6 @@
 XBotInterface:
-  urdf: xacro $(rospack find inail2arm_urdf)/urdf/inail2_dual_arm.urdf.xacro
-  srdf: xacro $(rospack find inail2arm_srdf)/srdf/inail2_dual_arm.srdf.xacro
+  urdf: xacro $(rospack find inail2arm_urdf)/urdf/inail2_dual_arm.urdf.xacro end_effector:=none
+  srdf: xacro $(rospack find inail2arm_srdf)/srdf/inail2_dual_arm.srdf.xacro end_effector:=none
 
 ModelInterface:
   model_type: "RBDL"

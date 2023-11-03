@@ -41,6 +41,42 @@ j_arm1_6:
     position: *pos_gains
     impedance:  *imp_gain_mid
 
+j_arm2_1:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm2_2:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm2_3:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm2_4:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm2_5:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
+j_arm2_6:
+  control_mode: *upper_body_ctrl
+  pid :
+    position: *pos_gains
+    impedance:  *imp_gain_mid
+
 dagana_1_claw_joint:
   control_mode: D4_impedance_ctrl
   pid:

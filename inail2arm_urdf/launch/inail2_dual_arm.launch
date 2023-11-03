@@ -5,8 +5,8 @@
     <arg name="end_effector" default="none" />
 
 
-    <param name="robot_description" command="$(find xacro)/xacro '$(find inail2arm_urdf)/urdf/inail2arm.urdf.xacro' end_effector:=$(arg end_effector)" />
-    <param name="robot_description_semantic" command="$(find xacro)/xacro '$(find inail2arm_srdf)/srdf/inail2arm.srdf.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro '$(find inail2arm_urdf)/urdf/inail2_dual_arm.urdf.xacro' end_effector:=$(arg end_effector)" />
+    <param name="robot_description_semantic" command="$(find xacro)/xacro '$(find inail2arm_srdf)/srdf/inail2_dual_arm.srdf.xacro'" />
     
     <param name="use_gui" value="$(arg gui)"/>
     <param name="rate" value="50.0"/>
