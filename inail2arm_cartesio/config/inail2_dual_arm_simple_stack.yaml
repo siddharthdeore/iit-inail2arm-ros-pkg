@@ -3,7 +3,9 @@ solver_options:
     back_end: qpoases
 
 stack:
-    - [LeftEE, RightEE]
+    # - [LeftEE, RightEE,LeftEELinear,LeftEEAngular,RightEELinear,RightEEAngular]
+    - [LeftEELinear, RightEELinear]
+    - [LeftEEAngular, RightEEAngular]
 
     
 constraints: [JointLimits, VelocityLimits]
@@ -12,17 +14,43 @@ LeftEE:
     type: Cartesian
     distal_link: arm1_6
     base_link: base_link
-    lambda: 0.1
     active: true
     name: left_ee
+
+LeftEELinear:
+    type: "Subtask"
+    task: "LeftEE"
+    weight: 1.0
+    active: true
+    indices: [0, 1, 2]
+    
+LeftEEAngular:
+    type: "Subtask"
+    task: "LeftEE"
+    weight: 0.5
+    active: true
+    indices: [3, 4, 5]
 
 RightEE:
     type: Cartesian
     distal_link: arm2_6
     base_link: base_link
-    lambda: 0.1
     active: true
     name: right_ee
+
+RightEELinear:
+    type: "Subtask"
+    task: "RightEE"
+    weight: 1.0
+    active: true
+    indices: [0, 1, 2]
+    
+RightEEAngular:
+    type: "Subtask"
+    task: "RightEE"
+    weight: 0.5
+    active: true
+    indices: [3, 4, 5]
 
 JointLimits:
     type: JointLimits
