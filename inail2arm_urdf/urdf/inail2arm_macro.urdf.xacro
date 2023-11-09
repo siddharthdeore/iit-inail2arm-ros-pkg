@@ -206,15 +206,28 @@
       <!-- shoulder pitch -->
 
       <!-- elbow yaw -->
+      
       <joint name="j_arm${arm_num}_3" type="revolute">
          <parent link="arm${arm_num}_2" />
          <child link="arm${arm_num}_3" />
          <origin xyz="${Elbow_1_Ox} ${rot*Elbow_1_Oy} ${Elbow_1_Oz}"
             rpy="${rot*Elbow_1_roll} ${Elbow_1_pitch} ${Elbow_1_yaw}" />
          <axis xyz="0 0 1" />
-         <limit lower="${j_arm_3_lower[0]}" upper="${j_arm_3_upper[0]}"
-            effort="${j_arm_3_torque[0]}" velocity="${j_arm_3_velocity[0]}" />
-      </joint>
+         <!-- original elbow limits
+            <limit lower="${j_arm_3_lower[0]}" upper="${j_arm_3_upper[0]}"
+         effort="${j_arm_3_torque[0]}" velocity="${j_arm_3_velocity[0]}" />
+         -->
+
+         <!-- Virtual limits for elbow joints, so elbow doesnt flip in undesired orientation -->
+        <xacro:if value="${parent == 'mount_frame_1'}">
+            <limit lower="${j_arm_3_lower[0]}" upper="0" effort="${j_arm_3_torque[0]}" velocity="${j_arm_3_velocity[0]}" />
+        </xacro:if>
+
+        <xacro:if value="${parent == 'mount_frame_2'}">
+            <limit lower="0" upper="${j_arm_3_upper[0]}" effort="${j_arm_3_torque[0]}" velocity="${j_arm_3_velocity[0]}" />
+       </xacro:if>
+
+    </joint>
       <!-- elbow yaw -->
 
       <!-- forearm yaw -->
