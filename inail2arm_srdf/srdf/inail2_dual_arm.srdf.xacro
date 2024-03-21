@@ -20,6 +20,9 @@
         </group>
     </xacro:if>
 
+    <group name="inail_drill">
+        <chain base_link="arm2_6" tip_link="drill_chuck"/>
+    </group>
     <group name="chains">
         <group name="left_arm"/>
         <group name="right_arm"/>
@@ -27,6 +30,8 @@
             <group name="dagana_1" />
             <group name="dagana_2" />
         </xacro:if>
+
+        <group name="inail_drill" />
     </group>
     
     <group_state group="chains" name="home">

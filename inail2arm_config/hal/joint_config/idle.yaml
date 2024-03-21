@@ -45,3 +45,29 @@ j_arm2_6:
 
 dagana_1_claw_joint:
   control_mode: *upper_body_ctrl
+
+heri2_1:
+  control_mode: 3B_motor_pos_ctrl
+  pid:
+    position: [100000, 0, 1]
+
+heri2_2:
+  control_mode: 3B_motor_pos_ctrl
+  pid:
+    position: [100000, 0, 1]
+
+inail_drill_motor:
+  control_mode: 71_motor_vel_ctrl
+  sign: 1
+  pos_offset: 0
+  max_current_A: 10.0
+  pid:
+    velocity: [100.0, 0.0, 0.0]
+
+# inail_drill_motor:
+#   control_mode: 71_motor_vel_ctrl
+#   sign: 1
+#   pos_offset: 0
+#   max_current_A: 5.0
+#   pid:
+#     velocity: [50.0, 0.0, 0.0]

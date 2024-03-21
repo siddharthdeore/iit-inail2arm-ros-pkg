@@ -1,0 +1,30 @@
+<launch>
+
+    <arg name="use_momentum_based" default="true"/>
+    <arg name="xbotcore" default="true"/>
+     
+    <node pkg="cartesian_interface" 
+          type="force_estimation_node" 
+          name="force_estimator"
+          output="screen">
+	  
+          
+        <param name="is_model_floating_base" value="false"/>
+        <param name="model_type" value="RBDL"/>
+        
+        <param name="links" type="yaml" value="[arm1_6, arm2_6]"/>
+        <param name="chains" type="yaml" value="[left_arm, right_arm]"/>
+        
+        <param name="arm1_6/dofs" type="yaml" value="[0, 1, 2]"/>
+        <param name="arm2_6/dofs" type="yaml" value="[0, 1, 2]"/>
+
+        <param name="rate" value="30.0"/>
+        <param name="use_momentum_based" value="$(arg use_momentum_based)"/>
+        
+        <remap if="$(arg xbotcore)" from="/robot_description" to="/xbotcore/robot_description"/>
+        <remap if="$(arg xbotcore)" from="/robot_description_semantic" to="/xbotcore/robot_description_semantic"/>
+        
+    </node>
+
+
+</launch>

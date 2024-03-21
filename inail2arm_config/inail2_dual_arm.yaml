@@ -41,7 +41,9 @@ xbotcore_plugins:
       type: tom_centauro_udp_server
       thread: udp_srv
 
-    
+    ec_ros:
+      type: ec_ros
+      thread: nrt_main
 
 
 # global parameters

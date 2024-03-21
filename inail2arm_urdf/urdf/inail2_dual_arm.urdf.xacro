@@ -71,7 +71,7 @@
  
     <!-- arm 1 -->
     <xacro:inail2_arm arm_num="1"  rot="1"  parent="mount_frame_1">
-        <origin xyz="0 0 0" rpy="0 0 ${-90*toRad}"/>
+        <origin xyz="0 0 0" rpy="0 0 ${-45*toRad}"/>
     </xacro:inail2_arm>
 
     <link name="mount_frame_2">
@@ -89,14 +89,28 @@
 
     <!-- arm 2 -->
     <xacro:inail2_arm arm_num="2"  rot="1"  parent="mount_frame_2">
-        <origin xyz="0 0 0" rpy="0 0 ${-90*toRad}"/>
+        <origin xyz="0 0 0" rpy="0 0 ${-135*toRad}"/>
     </xacro:inail2_arm>
 
+    <!-- Drill on arm 2 -->
+  <xacro:include filename="$(find inail_drill_urdf)/urdf/inail_drill_macro.urdf.xacro" />
+  <xacro:inail_drill parent_link="arm2_6">
+    <origin xyz="${EE_mount_Ox} ${EE_mount_Oy} ${EE_mount_Oz+0.003}" rpy="${EE_mount_roll} ${EE_mount_pitch} ${EE_mount_yaw}"/>
+  </xacro:inail_drill>
+<!-- 
+    <joint name="inail_drill_motor" type="continuous">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="arm2_6"/>
+        <child link="drill_base"/>
+        <limit effort="30" velocity="100.0" />
+        <limit effort="30" velocity="100.0" lower="-5" upper = "5" />
+    </joint> -->
+
     <!-- dagana on arm 1 -->
-    <xacro:inail2_arm_ee arm_num="1"  parent="arm1_6" />
+    <!-- <xacro:inail2_arm_ee arm_num="1"  parent="arm1_6" /> -->
 
     <!-- dagana on arm 2 -->
-    <xacro:inail2_arm_ee arm_num="2"  parent="arm2_6" />
+    <!-- <xacro:inail2_arm_ee arm_num="2"  parent="arm2_6" /> -->
     
     <!--- END EFFECTOR  -->
     <!-- <xacro:inail2_arm_ee arm_num="1"  parent="arm1_6">

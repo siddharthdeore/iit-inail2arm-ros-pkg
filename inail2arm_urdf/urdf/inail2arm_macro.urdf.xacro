@@ -214,6 +214,15 @@
          <axis xyz="0 0 1" />
          <limit lower="${j_arm_3_lower[0]}" upper="${j_arm_3_upper[0]}"
             effort="${j_arm_3_torque[0]}" velocity="${j_arm_3_velocity[0]}" />
+      <!-- Virtual limits for elbow joints, so elbow doesnt flip in undesired orientation: better use cartesio config file to set these-->
+        <!-- <xacro:if value="${parent == 'mount_frame_1'}">
+            <limit lower="${j_arm_3_lower[0]}" upper="${-10*toRad}" effort="${j_arm_3_torque[0]}" velocity="${j_arm_3_velocity[0]}" />
+        </xacro:if>
+
+        <xacro:if value="${parent == 'mount_frame_2'}">
+            <limit lower="${10*toRad}" upper="${j_arm_3_upper[0]}" effort="${j_arm_3_torque[0]}" velocity="${j_arm_3_velocity[0]}" />
+       </xacro:if> -->
+
       </joint>
       <!-- elbow yaw -->
 

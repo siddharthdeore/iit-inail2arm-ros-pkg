@@ -81,3 +81,21 @@ dagana_1_claw_joint:
   control_mode: D4_impedance_ctrl
   pid:
     impedance: [50, 10, 1.0, 0.003, 0.95]
+
+heri2_1:
+  control_mode: 3B_motor_pos_ctrl
+  pid:
+    position: [0, 0, 0]
+
+heri2_2:
+  control_mode: 3B_motor_pos_ctrl
+  pid:
+    position: [0, 0, 0]
+
+inail_drill_motor:
+  control_mode: 71_motor_vel_ctrl
+  sign: 1
+  pos_offset: 0
+  max_current_A: 10.0
+  pid:
+    velocity: [100.0, 0.0, 0.0]

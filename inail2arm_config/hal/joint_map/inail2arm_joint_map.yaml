@@ -12,3 +12,6 @@ joint_map:
   25: j_arm1_5
   26: j_arm1_6
   301: dagana_1_claw_joint
+  112: heri2_1
+  113: heri2_2
+  123: inail_drill_motor
